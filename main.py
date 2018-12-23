@@ -41,7 +41,7 @@ def main(argv):
             #分析url
             action = loadAct('urlScan')
             action.do(url)
-        else:
+        elif opt in ("-A","--all"):
             #ALL
             action = loadAct('urlScan')
             action.do(url)
