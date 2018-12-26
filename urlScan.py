@@ -24,6 +24,7 @@ class urlScan(action):
         html = BeautifulSoup(html,'html5lib')
         for i in html.find_all('a'):
             a = str(i.get('href'))
-            if (url in a or "http" not in a) and len(a) > 5 and "javascript" not in a:
+            b = url.split('.')[1]
+            if (b in a or "http" not in a) and len(a) > 5 and "javascript" not in a:
                 print a
         print "[+]Scan url completed!"

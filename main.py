@@ -13,10 +13,11 @@ Usage:
         -P/--port= Port scan
         -U/--Url=  get url
         -A/--all=  all options
+        -S/--ssl   SSL SHA
 '''
 def main(argv):
     try:
-        opts, args = getopt.getopt(sys.argv[1:], "hAPUu:", ["help", "url","all","port","Url"])#"ho:"也可以写成'-h-o:'
+        opts, args = getopt.getopt(sys.argv[1:], "hAPUS:u:", ["help", "all","port","Url","ssl","url"])#"ho:"也可以写成'-h-o:'
         flag = 0 #是否存在-u或者url=
         for i in opts:
             if 'u' in i[0]:
@@ -41,6 +42,10 @@ def main(argv):
             #分析url
             action = loadAct('urlScan')
             action.do(url)
+        elif opt in ("-S","--ssl"):
+            # SSL证书查询
+            action = loadAct('sslScan')
+            action.do(url,arg)
         elif opt in ("-A","--all"):
             #ALL
             action = loadAct('urlScan')
